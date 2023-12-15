@@ -8,12 +8,12 @@ export const Text = styled(NativeText)
 /**
  * You can use this pattern to create components with default styles
  */
-export const P = styled(NativeText, 'text-base text-black my-4')
+export const P = styled(NativeText, 'text-base text-black')
 
 /**
  * Components can have defaultProps and styles
  */
-export const H1 = styled(NativeText, 'text-3xl font-extrabold my-4')
+export const H1 = styled(NativeText, 'text-3xl font-extrabold')
 H1.defaultProps = {
   accessibilityLevel: 1,
   accessibilityRole: 'header',

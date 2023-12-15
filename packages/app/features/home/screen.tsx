@@ -1,69 +1,33 @@
-import { A, H1, P, Text, TextLink } from 'app/design/typography'
-import { Row } from 'app/design/layout'
-import { View } from 'app/design/view'
+import { A, H1, P } from 'app/design/typography'
+import { View, ScrollView } from 'app/design/view'
+import { Platform } from 'react-native'
+import { Img } from 'app/design/image'
 
-import { MotiLink } from 'solito/moti'
+const baseContainerStyle = Platform.select({
+  web: 'items-center justify-center',
+})
 
 export function HomeScreen() {
   return (
-    <View className="flex-1 items-center justify-center p-3">
-      <H1>Welcome to Solito.</H1>
-      <View className="max-w-xl">
-        <P className="text-center">
-          Here is a basic starter to show you how you can navigate from one
-          screen to another. This screen uses the same code on Next.js and React
-          Native.
-        </P>
-        <P className="text-center">
-          Solito is made by{' '}
-          <A
-            href="https://twitter.com/fernandotherojo"
-            hrefAttrs={{
-              target: '_blank',
-              rel: 'noreferrer',
-            }}
-          >
-            Fernando Rojo
-          </A>
-          .
-        </P>
-        <P className="text-center">
-          NativeWind is made by{' '}
-          <A
-            href="https://twitter.com/mark__lawlor"
-            hrefAttrs={{
-              target: '_blank',
-              rel: 'noreferrer',
-            }}
-          >
-            Mark Lawlor
-          </A>
-          .
-        </P>
+    <ScrollView
+      className="flex-1 p-3 mt-16"
+      contentContainerStyle={{
+        flexGrow: 1,
+        paddingBottom: 56,
+      }}
+    >
+      <View className={`w-full max-w-xl flex-row ${baseContainerStyle}`}>
+        <Img source={{uri: "https://github.com/jarilton.png"}} className="rounded-full w-32 h-32 mr-4" />
+        <View className='flex-1 flex-col'>
+          <H1>Olá, sou o Jamal</H1>
+          <P>Desenvolvedor Fullstack</P>
+          <P className='mt-2'>React Native, React, Node.js, Typescript</P>
+          <P className='mt-4'>
+            Reach me on{' '}
+            <A href="https://www.linkedin.com/in/jarilton-junior-jamal-031251116/n">@jarilton</A>
+          </P>
+        </View>
       </View>
-      <View className="h-[32px]" />
-      <Row className="space-x-8">
-        <TextLink href="/user/fernando">Regular Link</TextLink>
-        <MotiLink
-          href="/user/fernando"
-          animate={({ hovered, pressed }) => {
-            'worklet'
-
-            return {
-              scale: pressed ? 0.95 : hovered ? 1.1 : 1,
-              rotateZ: pressed ? '0deg' : hovered ? '-3deg' : '0deg',
-            }
-          }}
-          transition={{
-            type: 'timing',
-            duration: 150,
-          }}
-        >
-          <Text selectable={false} className="text-base font-bold">
-            Moti Link
-          </Text>
-        </MotiLink>
-      </Row>
-    </View>
+    </ScrollView>
   )
 }
