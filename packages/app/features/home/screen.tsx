@@ -2,7 +2,37 @@ import { A, H1, H2, H4, P } from 'app/design/typography'
 import { View, ScrollView } from 'app/design/view'
 import { Platform } from 'react-native'
 import { Img } from 'app/design/image'
-import { useEffect, useState } from 'react'
+
+const repos = [
+  {
+    id: 1,
+    name: 'react-native-nativewind',
+    full_name: 'jarilton/react-native-nativewind',
+    description: 'A React Native implementation of TailwindCSS',
+    html_url: '',
+  },
+  {
+    id: 2,
+    name: 'react-native-solito',
+    full_name: 'jarilton/react-native-solito',
+    description: 'A React Native implementation of Solito',
+    html_url: '',
+  },
+  {
+    id: 3,
+    name: 'solito',
+    full_name: 'jarilton/solito',
+    description: 'A React implementation of TailwindCSS',
+    html_url: '',
+  },
+  {
+    id: 4,
+    name: 'nativewind',
+    full_name: 'jarilton/nativewind',
+    description: 'A React Native implementation of TailwindCSS',
+    html_url: '',
+  },
+]
 
 const baseContainerContentStyle:
   | 'center'
@@ -29,26 +59,6 @@ interface IRepoProps {
 }
 
 export function HomeScreen() {
-  const [repos, setRepos] = useState<IRepoProps[]>([])
-
-  const getRepo = async () => {
-    try {
-      const response = await fetch('https://api.github.com/users/jarilton/repos')
-      
-      const data = await response.json()
-
-      console.log("dados da api",data)
-
-      setRepos(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  useEffect(() => {
-    getRepo()
-  }, [])
-
   return (
     <ScrollView
       className={`mt-16 flex-1 p-3 ${baseContainerStyle}`}
